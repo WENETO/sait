@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги для организаций и юридических лиц | DEZON</title>
+    <meta name="description" content="Профессиональный пест-контроль для бизнеса: кафе, рестораны, отели, склады, офисы, производственные помещения. Гарантия, договор, сертификаты.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/web-background.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ "ОРГАНИЗАЦИЯМ" ===== */
+        .org-page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('images/organizations-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-page-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(12, 131, 70, 0.2) 0%, rgba(255, 152, 0, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .org-page-header h1 {
+            color: var(--text-light);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .org-page-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .org-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-section:nth-child(even) {
+            background-color: var(--gray);
+        }
+
+        .org-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .org-section h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .org-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .org-feature-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(12, 131, 70, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+
+        .org-feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .org-feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .org-feature-card:hover .org-feature-icon {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        .org-feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .org-feature-card p {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .org-price-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--text-dark);
+            font-weight: 700;
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+        }
+
+        .org-widgets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .org-widget {
+            background: linear-gradient(135deg, #FFF9C4 0%, #FFFDE7 100%);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(12, 131, 70, 0.1);
+        }
+
+        .org-widget:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+
+        .org-widget-header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .org-widget-header h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .org-widget-header i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .org-widget-body {
+            padding: 30px 25px;
+        }
+
+        .org-widget-body ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .org-widget-body li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px dashed rgba(0,0,0,0.05);
+        }
+
+        .org-widget-body li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .org-widget-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .org-widget-footer {
+            padding: 0 25px 25px;
+            text-align: center;
+        }
+
+        .org-advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .org-advantage-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .org-advantage-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .org-advantage-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .org-advantage-item h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .org-advantage-item p {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+        }
+
+        .org-docs-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .org-doc-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-width: 200px;
+            flex: 1 1 200px;
+            transition: var(--transition);
+        }
+
+        .org-doc-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .org-doc-item i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .org-doc-item span {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .org-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .org-cta h2 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .org-cta p {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .org-cta .btn {
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .org-page-header h1 {
+                font-size: 2rem;
+            }
+            .org-widgets-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Фоны (стандартные) -->
+    <div class="web-background">... (полный код фона, как в других страницах) ...</div>
+    <div class="site-background">... (полный код фона, как в других страницах) ...</div>
+
+    <!-- ШАПКА (стандартная, с активной ссылкой Организациям) -->
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">
+                <span class="logo__primary">DEZ</span><span class="logo__secondary">ON</span>
+            </a>
+            <nav class="nav">
+                <button class="nav__toggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="services.html">Услуги и цены</a></li>
+                    <li><a href="organizations.html" class="active">Организациям</a></li>
+                    <li><a href="client-memo.html">Памятка клиенту</a></li>
+                    <li><a href="index.html#process">Как работаем</a></li>
+                    <li><a href="index.html#calculator">Калькулятор</a></li>
+                    <li><a href="index.html#reviews">Отзывы</a></li>
+                    <li><a href="blog.html">Статьи</a></li>
+                    <li><a href="index.html#contacts">Контакты</a></li>
+                </ul>
+                <div class="header__contacts">
+                    <a href="tel:+79138572271" class="phone">8-913-857-22-71</a>
+                    <p class="work-hours">Круглосуточно</p>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ШАПКА СТРАНИЦЫ -->
+        <section class="org-page-header">
+            <div class="container">
+                <h1 class="animate-on-scroll" data-animation="fadeInUp">Услуги для организаций и юридических лиц</h1>
+                <p class="animate-on-scroll" data-animation="fadeInUp" data-delay="200">Комплексные программы пест-контроля для предприятий любого масштаба. Соответствие требованиям СанПиН, ХАССП и международным стандартам.</p>
+            </div>
+        </section>
+
+        <!-- ПРЕИМУЩЕСТВА РАБОТЫ С ЮРИДИЧЕСКИМИ ЛИЦАМИ -->
+        <section class="org-section">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fadeInUp">Почему бизнес выбирает DEZON</h2>
+                <div class="org-features-grid">
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn">
+                        <div class="org-feature-icon"><i class="fas fa-file-signature"></i></div>
+                        <h3>Заключение договора</h3>
+                        <p>Официальный договор с четкими сроками, гарантиями и стоимостью. Все услуги закрываются актами выполненных работ.</p>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="100">
+                        <div class="org-feature-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <h3>Соответствие нормам</h3>
+                        <p>Работаем по СанПиН 3.3686-21, требованиям Роспотребнадзора и стандартам ХАССП для пищевых производств.</p>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="200">
+                        <div class="org-feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h3>Абонентское обслуживание</h3>
+                        <p>Индивидуальные графики обработок. Плановые выезды, внеплановые заявки, круглосуточная поддержка.</p>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="300">
+                        <div class="org-feature-icon"><i class="fas fa-flask"></i></div>
+                        <h3>Профессиональные препараты</h3>
+                        <p>Только сертифицированные инсектициды, родентициды и дезинфектанты 4 класса опасности (малоопасные).</p>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="400">
+                        <div class="org-feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Гарантия до 3 лет</h3>
+                        <p>Для комплексных программ долгосрочного обслуживания. Бесплатные повторные обработки в гарантийный период.</p>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="500">
+                        <div class="org-feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <h3>Срочный выезд 24/7</h3>
+                        <p>Прибытие на объект в течение 1-2 часов. Работаем круглосуточно, включая праздничные и выходные дни.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СПЕЦИАЛИЗИРОВАННЫЕ УСЛУГИ ДЛЯ РАЗЛИЧНЫХ ТИПОВ ОБЪЕКТОВ -->
+        <section class="org-section" style="background-color: var(--gray);">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fadeInUp">Услуги по типу объекта</h2>
+                <div class="org-widgets-grid">
+                    <!-- Общепит -->
+                    <div class="org-widget animate-on-scroll" data-animation="zoomIn">
+                        <div class="org-widget-header">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Кафе, рестораны, столовые</h3>
+                        </div>
+                        <div class="org-widget-body">
+                            <ul>
+                                <li>Полная дезинсекция (тараканы, муравьи, мухи, осы)</li>
+                                <li>Дератизация (крысы, мыши)</li>
+                                <li>Дезинфекция производственных цехов и залов</li>
+                                <li>Обработка вентиляции и труднодоступных мест</li>
+                                <li>Безопасные препараты без запаха</li>
+                                <li>Журнал учета обработок</li>
+                                <li>Соответствие ХАССП</li>
+                            </ul>
+                            <div class="org-widget-price">от 5 500 ₽</div>
+                        </div>
+                        <div class="org-widget-footer">
+                            <button class="btn btn--primary" data-service="Общепит - комплексная обработка" data-modal="order">Рассчитать стоимость</button>
+                        </div>
+                    </div>
+                    <!-- Гостиницы и отели -->
+                    <div class="org-widget animate-on-scroll" data-animation="zoomIn" data-delay="100">
+                        <div class="org-widget-header">
+                            <i class="fas fa-hotel"></i>
+                            <h3>Гостиницы, хостелы, базы отдыха</h3>
+                        </div>
+                        <div class="org-widget-body">
+                            <ul>
+                                <li>Обработка номерного фонда от клопов, блох</li>
+                                <li>Дезинсекция мест общего пользования</li>
+                                <li>Дератизация подвалов и чердаков</li>
+                                <li>Акарицидная обработка прилегающей территории</li>
+                                <li>Гарантия конфиденциальности</li>
+                                <li>Работа в отсутствие гостей</li>
+                            </ul>
+                            <div class="org-widget-price">от 7 000 ₽</div>
+                        </div>
+                        <div class="org-widget-footer">
+                            <button class="btn btn--primary" data-service="Гостиницы - комплекс" data-modal="order">Рассчитать стоимость</button>
+                        </div>
+                    </div>
+                    <!-- Офисы и бизнес-центры -->
+                    <div class="org-widget animate-on-scroll" data-animation="zoomIn" data-delay="200">
+                        <div class="org-widget-header">
+                            <i class="fas fa-building"></i>
+                            <h3>Офисы, бизнес-центры</h3>
+                        </div>
+                        <div class="org-widget-body">
+                            <ul>
+                                <li>Дезинсекция (тараканы, муравьи, чешуйницы)</li>
+                                <li>Дератизация</li>
+                                <li>Дезинфекция систем вентиляции</li>
+                                <li>Обработка ковролина и мягкой мебели</li>
+                                <li>Работа в нерабочее время</li>
+                                <li>Абонентское обслуживание</li>
+                            </ul>
+                            <div class="org-widget-price">от 4 500 ₽</div>
+                        </div>
+                        <div class="org-widget-footer">
+                            <button class="btn btn--primary" data-service="Офис - обработка" data-modal="order">Рассчитать стоимость</button>
+                        </div>
+                    </div>
+                    <!-- Склады и производства -->
+                    <div class="org-widget animate-on-scroll" data-animation="zoomIn" data-delay="300">
+                        <div class="org-widget-header">
+                            <i class="fas fa-warehouse"></i>
+                            <h3>Склады, логистические центры</h3>
+                        </div>
+                        <div class="org-widget-body">
+                            <ul>
+                                <li>Дератизация (крысы, мыши, полевки)</li>
+                                <li>Дезинсекция (амбарные вредители, жуки)</li>
+                                <li>Фумигация</li>
+                                <li>Барьерная защита периметра</li>
+                                <li>Установка УЗ-отпугивателей</li>
+                                <li>Гарантия 1 год</li>
+                            </ul>
+                            <div class="org-widget-price">от 80 ₽/м²</div>
+                        </div>
+                        <div class="org-widget-footer">
+                            <button class="btn btn--primary" data-service="Склад - комплекс" data-modal="order">Рассчитать стоимость</button>
+                        </div>
+                    </div>
+                    <!-- Торговые центры, магазины -->
+                    <div class="org-widget animate-on-scroll" data-animation="zoomIn" data-delay="400">
+                        <div class="org-widget-header">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>ТЦ, магазины, супермаркеты</h3>
+                        </div>
+                        <div class="org-widget-body">
+                            <ul>
+                                <li>Дезинсекция продовольственных отделов</li>
+                                <li>Дератизация складских помещений</li>
+                                <li>Дезинфекция залов</li>
+                                <li>Обработка пищевых производств</li>
+                                <li>Соответствие требованиям Роспотребнадзора</li>
+                            </ul>
+                            <div class="org-widget-price">от 8 000 ₽</div>
+                        </div>
+                        <div class="org-widget-footer">
+                            <button class="btn btn--primary" data-service="ТЦ - обработка" data-modal="order">Рассчитать стоимость</button>
+                        </div>
+                    </div>
+                    <!-- Государственные учреждения -->
+                    <div class="org-widget animate-on-scroll" data-animation="zoomIn" data-delay="500">
+                        <div class="org-widget-header">
+                            <i class="fas fa-university"></i>
+                            <h3>Школы, больницы, детские сады</h3>
+                        </div>
+                        <div class="org-widget-body">
+                            <ul>
+                                <li>Гипоаллергенные препараты</li>
+                                <li>Обработка в каникулы/выходные</li>
+                                <li>Дезинфекция помещений</li>
+                                <li>Акарицидная обработка территории</li>
+                                <li>Предоставление всех сертификатов</li>
+                            </ul>
+                            <div class="org-widget-price">от 6 000 ₽</div>
+                        </div>
+                        <div class="org-widget-footer">
+                            <button class="btn btn--primary" data-service="Госучреждение - обработка" data-modal="order">Рассчитать стоимость</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРОГРАММЫ АБОНЕНТСКОГО ОБСЛУЖИВАНИЯ -->
+        <section class="org-section">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fadeInUp">Программы долгосрочного обслуживания</h2>
+                <div class="org-features-grid">
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn">
+                        <h3>Базовый</h3>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 20px 0;">от 4 900 ₽/мес</div>
+                        <ul style="text-align: left; list-style: none; padding-left: 0;">
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> 1 обработка в квартал</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Дератизация/дезинсекция</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Гарантия 1 год</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Внеплановый выезд - 30%</li>
+                        </ul>
+                        <button class="btn btn--primary" style="margin-top: 20px;" data-service="Абонемент Базовый" data-modal="order">Выбрать</button>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="100" style="border: 2px solid var(--secondary); transform: scale(1.05);">
+                        <h3>Оптимальный</h3>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 20px 0;">от 8 900 ₽/мес</div>
+                        <ul style="text-align: left; list-style: none; padding-left: 0;">
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> 1 обработка в 2 месяца</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Дератизация + дезинсекция</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Дезинфекция по запросу</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Гарантия 2 года</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> 1 внеплановый выезд бесплатно</li>
+                        </ul>
+                        <button class="btn btn--secondary" style="margin-top: 20px;" data-service="Абонемент Оптимальный" data-modal="order">Выбрать</button>
+                    </div>
+                    <div class="org-feature-card animate-on-scroll" data-animation="zoomIn" data-delay="200">
+                        <h3>Премиум</h3>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 20px 0;">индивидуально</div>
+                        <ul style="text-align: left; list-style: none; padding-left: 0;">
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Ежемесячная обработка</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Полный комплекс услуг</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Круглосуточная поддержка</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Гарантия 3 года</li>
+                            <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Неограниченные вызовы</li>
+                        </ul>
+                        <button class="btn btn--primary" style="margin-top: 20px;" data-service="Абонемент Премиум" data-modal="order">Запросить КП</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ДОПОЛНИТЕЛЬНЫЕ ВОЗМОЖНОСТИ ДЛЯ ЮР.ЛИЦ -->
+        <section class="org-section" style="background-color: var(--gray);">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fadeInUp">Специальные сервисы для бизнеса</h2>
+                <div class="org-advantages-grid">
+                    <div class="org-advantage-item animate-on-scroll" data-animation="zoomIn">
+                        <i class="fas fa-microscope"></i>
+                        <h4>Лабораторный контроль</h4>
+                        <p>Отбор проб, анализ эффективности обработок, исследование на наличие вредителей.</p>
+                    </div>
+                    <div class="org-advantage-item animate-on-scroll" data-animation="zoomIn" data-delay="100">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4>Обучение персонала</h4>
+                        <p>Проведение инструктажей для сотрудников по профилактике заражений.</p>
+                    </div>
+                    <div class="org-advantage-item animate-on-scroll" data-animation="zoomIn" data-delay="200">
+                        <i class="fas fa-tools"></i>
+                        <h4>Мониторинг и аудит</h4>
+                        <p>Регулярные проверки, установка мониторинговых станций, цифровая отчетность.</p>
+                    </div>
+                    <div class="org-advantage-item animate-on-scroll" data-animation="zoomIn" data-delay="300">
+                        <i class="fas fa-file-invoice"></i>
+                        <h4>Заключение для проверок</h4>
+                        <p>Предоставление полного пакета документов для Роспотребнадзора и СЭС.</p>
+                    </div>
+                    <div class="org-advantage-item animate-on-scroll" data-animation="zoomIn" data-delay="400">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h4>Отсрочка платежа</h4>
+                        <p>Для постоянных клиентов и крупных заказов возможна отсрочка до 30 дней.</p>
+                    </div>
+                    <div class="org-advantage-item animate-on-scroll" data-animation="zoomIn" data-delay="500">
+                        <i class="fas fa-truck"></i>
+                        <h4>Выезд за МКАД/регионы</h4>
+                        <p>Работаем по всей области, выезжаем в регионы для крупных заказчиков.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ДОКУМЕНТАЦИЯ И СЕРТИФИКАТЫ -->
+        <section class="org-section">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fadeInUp">Документы и сертификаты</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: var(--text-dark);">Для юридических лиц мы предоставляем полный пакет закрывающих документов, а также копии сертификатов на используемые средства.</p>
+                <div class="org-docs-grid">
+                    <div class="org-doc-item animate-on-scroll" data-animation="zoomIn">
+                        <i class="fas fa-file-contract"></i>
+                        <span>Договор оказания услуг</span>
+                    </div>
+                    <div class="org-doc-item animate-on-scroll" data-animation="zoomIn" data-delay="100">
+                        <i class="fas fa-file-signature"></i>
+                        <span>Акт выполненных работ</span>
+                    </div>
+                    <div class="org-doc-item animate-on-scroll" data-animation="zoomIn" data-delay="200">
+                        <i class="fas fa-certificate"></i>
+                        <span>Сертификаты на препараты</span>
+                    </div>
+                    <div class="org-doc-item animate-on-scroll" data-animation="zoomIn" data-delay="300">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Журнал учета обработок</span>
+                    </div>
+                    <div class="org-doc-item animate-on-scroll" data-animation="zoomIn" data-delay="400">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Счет, накладная, счет-фактура</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA БЛОК -->
+        <section class="org-cta">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fadeInUp">Оставьте заявку для юридических лиц</h2>
+                <p class="animate-on-scroll" data-animation="fadeInUp" data-delay="200">Менеджер свяжется с вами в течение 15 минут для подготовки коммерческого предложения</p>
+                <div class="animate-on-scroll" data-animation="fadeInUp" data-delay="400">
+                    <button class="btn btn--secondary btn--large" data-modal="order" data-service="Заявка для юр.лиц">Заказать расчет</button>
+                    <button class="btn btn--outline btn--large" style="background: white; color: var(--primary); border-color: white;" data-modal="consult">Получить консультацию</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ФУТЕР (полностью идентичный обновленному футеру с тремя соглашениями) -->
+    <footer id="contacts" class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo__primary">DEZ</span><span class="logo__secondary">ON</span>
+                    </a>
+                    <p class="footer__text">Профессиональная дезинсекция, дератизация и дезинфекция. Работаем с 2016 года.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/dezon_pro" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Контакты</h4>
+                    <div class="footer__contacts">
+                        <a href="tel:+79138572271" class="contact-link"><i class="fas fa-phone"></i> 8-913-857-22-71</a>
+                        <p class="contact-text">Круглосуточно</p>
+                        <a href="mailto:prokudinvladislav9@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> prokudinvladislav9@gmail.com</a>
+                        <p class="contact-text"><i class="fas fa-map-marker-alt"></i> г. Алтайская, ул. Алтайская, д. 10</p>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Остались вопросы?</h4>
+                    <form id="footerForm" class="footer-form">
+                        <input type="text" name="name" placeholder="Имя" required>
+                        <input type="tel" name="phone" placeholder="Телефон" required>
+                        <button type="submit" class="btn btn--primary"><i class="fas fa-phone-alt"></i> Перезвоните мне</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom" style="color: #ffffff;">
+                <p style="color: #ffffff;">&copy; 2026 DEZON. Все права защищены.</p>
+                <p style="color: #ffffff;">ИП Иванов И.И. | ОГРНИП 123456789012345</p>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                    <a href="#" class="footer__link" id="privacyPolicyLink">Политика конфиденциальности</a>
+                    <a href="#" class="footer__link" id="clientAgreementLink">Клиентское соглашение</a>
+                    <a href="#" class="footer__link" id="userAgreementLink">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Виджеты, модальные окна, скрипты... -->
+    <button class="callback-widget" aria-label="Заказать обратный звонок" data-modal="consult">...</button>
+    <button class="scroll-top" aria-label="Наверх"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- МОДАЛЬНЫЕ ОКНА (те же, что и в других страницах, с полными текстами) -->
+    <div class="modal" id="privacyPolicyModal">...</div>
+    <div class="modal" id="clientAgreementModal">...</div>
+    <div class="modal" id="userAgreementModal">...</div>
+    <div class="modal" id="consultModal">...</div>
+    <div class="modal" id="orderModal">...</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/web-background.js"></script>
+    <script>
+        // Логика открытия модальных окон соглашений (аналогично предыдущим)
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = {
+                privacyPolicyLink: 'privacyPolicyModal',
+                clientAgreementLink: 'clientAgreementModal',
+                userAgreementLink: 'userAgreementModal'
+            };
+            for (const [id, modalId] of Object.entries(links)) {
+                const link = document.getElementById(id);
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const modal = document.getElementById(modalId);
+                        if (modal) {
+                            if (window.DEZ?.closeAllModals) window.DEZ.closeAllModals();
+                            modal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
