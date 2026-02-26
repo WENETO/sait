@@ -20,7 +20,7 @@
     --text-light: #ffffff;
     --text-dark: #1a1a1a;
     --text-muted: #6c757d;
-    
+
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --radius: 8px;
     --transition: all 0.3s ease;
@@ -265,6 +265,10 @@ p {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
+    /* Сдвигаем левую границу */
+    max-width: 1300px; /* Чуть шире контейнера для свободы */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo {
@@ -314,7 +318,7 @@ p {
 .nav__list {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 30px; /* Уменьшил отступ для лучшего размещения на больших экранах */
     margin: 0;
     padding: 0;
 }
@@ -583,7 +587,7 @@ p {
 /* ===== СТИЛИ ДЛЯ ВИДЖЕТОВ УСЛУГ ===== */
 .services-widgets {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивность */
     gap: 30px;
     margin: 50px 0;
 }
@@ -596,6 +600,8 @@ p {
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
+    display: flex; /* Делаем флекс-контейнером для равномерной высоты */
+    flex-direction: column;
 }
 
 .service-widget:hover {
@@ -653,6 +659,9 @@ p {
 
 .service-widget__body {
     padding: 25px;
+    flex-grow: 1; /* Растягиваем тело, чтобы занять все доступное место */
+    display: flex;
+    flex-direction: column;
 }
 
 .service-widget__price {
@@ -666,6 +675,7 @@ p {
 .service-widget__features {
     list-style: none;
     margin-bottom: 20px;
+    flex-grow: 1; /* Список также растягивается */
 }
 
 .service-widget__features li {
@@ -869,72 +879,9 @@ p {
     margin-right: 20px;
 }
 
-/* ===== ГАЛЕРЕЯ РАБОТ ===== */
+/* ===== ГАЛЕРЕЯ РАБОТ (УДАЛЕНА, НО СТИЛИ ОСТАВЛЕНЫ НА ВСЯКИЙ СЛУЧАЙ) ===== */
 .gallery-section {
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
-    background-color: #f8f9fa;
-}
-
-.gallery-comparison {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.gallery-comparison-item {
-    background: white;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.gallery-comparison-title {
-    text-align: center;
-    padding: 15px;
-    background: var(--primary);
-    color: white;
-    font-weight: 600;
-    margin: 0;
-}
-
-.gallery-comparison-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    padding: 15px;
-}
-
-.gallery-comparison-image {
-    height: 200px;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-}
-
-.gallery-comparison-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-comparison-image:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-comparison-label {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-size: 0.9rem;
+    display: none; /* Скрываем секцию */
 }
 
 /* ===== КАЛЬКУЛЯТОР СТОИМОСТИ ===== */
@@ -973,7 +920,7 @@ p {
     gap: 10px;
 }
 
-.form-group select, 
+.form-group select,
 .form-group input[type="text"],
 .form-group input[type="tel"],
 .form-group textarea {
@@ -1235,6 +1182,20 @@ p {
     text-align: center;
     margin-top: 15px;
 }
+/* Стиль для кликабельной ссылки-соглашения */
+.consent-link {
+    color: var(--primary);
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+.consent-link:hover {
+    color: var(--primary-dark);
+}
 
 /* ===== ФУТЕР ===== */
 .footer {
@@ -1252,7 +1213,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         radial-gradient(circle at 20% 80%, rgba(255, 152, 0, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(12, 131, 70, 0.1) 0%, transparent 50%);
 }
@@ -1468,7 +1429,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 30% 70%, rgba(255, 152, 0, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 70% 30%, rgba(12, 131, 70, 0.03) 0%, transparent 50%);
     z-index: 0;
@@ -1811,7 +1772,7 @@ p {
 }
 
 .cta-btn {
-    white-space: nowrap;
+    white-space: nowrap; /* Гарантируем, что текст не переносится */
 }
 
 .cta-note {
@@ -1840,11 +1801,141 @@ p {
     color: #ffffff !important; /* Белый цвет текста */
 }
 
-/* Добавьте этот код в конец файла css/style.css */
-
 /* ===== СПЕЦИАЛЬНЫЕ ЦВЕТОВЫЕ КЛАССЫ ДЛЯ ПАМЯТКИ КЛИЕНТУ ===== */
 .memo-contact-blue {
     color: #007bff !important; /* Синий */
     font-weight: 700;
     font-size: 1.2rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 1200px) {
+    .nav__list {
+        gap: 25px; /* Уменьшаем отступы */
+    }
+}
+
+@media (max-width: 992px) {
+    .nav__list {
+        gap: 20px; /* Еще уменьшаем */
+    }
+    .nav__list a {
+        font-size: 0.95rem;
+    }
+    .header__contacts {
+        min-width: 150px; /* Уменьшаем размер блока с телефоном */
+    }
+    .phone {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Мобильное меню */
+    .nav__toggle {
+        display: flex;
+        order: 2;
+    }
+
+    .logo {
+        order: 1;
+        font-size: 1.5rem; /* Чуть меньше на мобильных */
+    }
+
+    .header__contacts {
+        display: none; /* Прячем контакты в шапке на мобильных */
+    }
+
+    .nav {
+        order: 3;
+        flex: none;
+        margin: 0;
+    }
+
+    .nav__list {
+        position: fixed;
+        top: 70px; /* Чуть выше из-за меньшего логотипа */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: var(--transition);
+        z-index: 999;
+        gap: 20px;
+        backdrop-filter: blur(10px);
+    }
+
+    .nav__list.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav__list a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__list a:after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+    }
+
+    .nav__list a:hover:after,
+    .nav__list a.active:after {
+        width: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Адаптивность для виджетов услуг на мобильных */
+    .services-widgets {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 20px;
+    }
+    .service-widget {
+        max-width: 400px; /* Ограничиваем ширину для центрирования */
+        margin: 0 auto 20px;
+        width: 100%; /* Занимаем всю доступную ширину */
+    }
+
+    /* Адаптивность для калькулятора */
+    .calculator__wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    /* Адаптивность для CTA формы */
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .cta-btn {
+        width: 100%; /* Кнопка на всю ширину */
+        white-space: normal; /* Разрешаем перенос, если очень узко */
+        min-width: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: 1.3rem;
+    }
+    .nav__list {
+        top: 65px; /* Корректируем под новый размер */
+    }
+    .service-widget__title {
+        font-size: 1.3rem;
+    }
+    .service-widget__price {
+        font-size: 1.5rem;
+    }
 }
