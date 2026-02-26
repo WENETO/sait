@@ -91,7 +91,7 @@ function initNewPreloader() {
             
             // Показываем уведомление о загрузке
             if (window.DEZ && window.DEZ.showNotification) {
-                window.DEZ.showNotification('Добро пожаловать в DEZON! Защита и уют вашего дома.', 'success');
+                window.DEZ.showNotification('Добро пожаловать в DEZ-ONE! Защита и уют вашего дома.', 'success');
             }
         }, 500);
     }, 6000);
